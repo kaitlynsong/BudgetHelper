@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Income</title>
+<link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div align="left">
+		<br>
+		<h2>Income</h2>
+		<div>
+			<p>Create a new income entry by clicking the button below.</p>
+			<button class="button" onclick="document.location='/new_income_form'">New Income Entry</button>
+		</div>
+		<br> <br>
+		<h2>Your Income</h2>
+		<div>
+			<p>Here is your income transaction history.</p>
+			<table border="1" class="collapse-border">
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Amount</th>
+						<th>Note</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="income : ${listIncome}">
+						<td th:text="${income.date}">Date</td>
+						<td th:text="${income.amount}">Amount</td>
+						<td th:text="${income.note}">Note</td>
+						<td><a th:href="@{'edit/income/' + ${income.id}}"> Edit</a>
+							&nbsp;&nbsp;&nbsp; <a
+							th:href="@{'delete/income/' + ${income.id}}"> Delete</a>
+					</tr>
+				</tbody>
+			</table>
+			<br><br>
+		</div>
+	</div>
+</body>
+</html>

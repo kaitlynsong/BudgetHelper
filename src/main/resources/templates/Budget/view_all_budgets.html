@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>View All Budgets</title>
+<link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div align="left">
+		<br>
+		<h2>Your Budgets</h2>
+		<table border="1" class="collapse-border">
+			<thead>
+				<tr>
+					<th>Weekly Budget</th>
+					<th>Monthly Budget</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="budget : ${listBudgets}">
+					<td th:text="${budget.weeklyBudget}">Weekly Budget</td>
+					<td th:text="${budget.monthlyBudget}">Monthly Budget</td>
+					<td th:text="${budget.date}">Date</td>
+					<td>
+						<a th:href="@{'/edit/budget/' + ${budget.id}}"> Edit</a>
+						&nbsp;&nbsp;&nbsp;
+						<a th:href="@{'/delete/budget/' + ${budget.id}}"> Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<button class="button" onclick="document.location='/budget_page'">View Current Month</button>
+		<button class="button" onclick="document.location='/new_budget_form'">New Budget</button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Expense Form</title>
+<link th:href="@{../../main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="../../logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div align="center">
+	    <br>
+	    <h2>Edit Expense</h2>
+	    <form action="#" th:action="@{/save_expense}" method="post" th:object="${expense}">
+	        <table>
+	        	<tr>
+	        		<td>Expense Entry #:</td>
+	        		<td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+	 			</tr>
+	        	<tr>
+	        		<td>Amount:</td>
+	        		<td><input type="text" th:field="*{amount}"/></td>
+        			<td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Amount Error</td>
+	 			</tr>
+	        	<tr>
+	 				<td>Date(YYYY-MM-DD):</td>
+	        		<td><input type="text" th:field="*{date}"/></td>
+        		<td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date Error</td>
+	        	</tr>
+	        	<tr>
+ 				<td>Select category</td>
+             	<td><select th:field="*{category}">
+    				<option th:each="category : ${listCategories}" th:value="${category.categoryName}" th:text="${category.categoryName}"></option>
+					</select></td>
+       	 		</tr>
+       	 		<tr>
+	        		<td>Note(Optional):</td>
+	        		<td><input type="text" th:field="*{note}"/></td>
+        			<td th:if="${#fields.hasErrors('note')}" th:errors="*{note}">Note Error</td>
+	 			</tr>
+        		<tr>
+	        </table><br>
+	        <button class="form-button" type="submit">Save</button>   
+	    </form>
+	</div>
+</body>
+</html>

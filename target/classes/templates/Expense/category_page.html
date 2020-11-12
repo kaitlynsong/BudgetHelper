@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Expense Categories</title>
+<link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div align="left">
+		<br>
+		<h2>Expense Categories</h2>
+		<div>
+			<table border="1" class="collapse-border">
+				<thead>
+					<tr>
+						<th>Category</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="category : ${listCategories}">
+						<td th:text="${category.categoryName}">Category</td>
+						<td>
+							<a th:href="@{'edit/category/' + ${category.id}}"> Edit</a>
+							&nbsp;&nbsp;&nbsp;
+							<a th:href="@{'delete/category/' + ${category.id}}"> Delete</a>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<button class="small-button" onclick="document.location='/expense_page'">Back to Expenses</button>
+			<button class="small-button" onclick="document.location='/new_category_form'">New Category</button>
+		</div>
+	</div>
+</body>
+</html>

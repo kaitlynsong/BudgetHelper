@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>New Budget Form</title>
+<link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+<div align="center">
+    <br>
+    <h2>New Budget</h2>
+    <form action="#" th:action="@{/save_budget}" method="post" th:object="${budget}">
+        <table class="white-border">
+        	<tr>
+        		<td>Weekly Budget:</td>
+        		<td><input type="text" th:field="*{weeklyBudget}"/></td>
+        		<td th:if="${#fields.hasErrors('weeklyBudget')}" th:errors="*{weeklyBudget}">Weekly Budget Error</td>
+ 			</tr>
+ 			<tr>
+ 				<td>Monthly Budget:</td>
+        		<td><input type="text" th:field="*{monthlyBudget}"/></td>
+        		<td th:if="${#fields.hasErrors('monthlyBudget')}" th:errors="*{monthlyBudget}">Monthly Budget Error</td>
+        	</tr>
+        	<tr>
+ 				<td>Date(YYYY-MM):</td>
+        		<td><input type="text" th:field="*{date}"/></td>
+        		<td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date Error</td>
+        	</tr>
+        </table><br>
+        <button class="form-button" type="submit">Save</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Budget</title>
+<link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div align="left">
+	<br>
+	<h2>Your Personal Budget</h2>
+		<div th:each="budget : ${listCurrentBudget}">
+			<p>Your weekly budget for this month is
+				<span th:text="${budget.weeklyBudget}">Weekly Budget</span>
+			</p>
+			<p>Your monthly budget for this month is
+				<span th:text="${budget.monthlyBudget}">Monthly Budget</span>
+			</p>
+
+		</div>
+		<div>
+			<p th:text="${listCurrentBudget.isEmpty()} ? 'You don\'t have a budget set up for the current month. Please create a new budget.'"></p>
+		</div>
+		<br>
+		<button class="button" onclick="document.location='/view_all_budgets'">View All Budgets</button>
+		<button class="button" onclick="document.location='/new_budget_form'">New Budget</button>
+	</div>
+</body>
+</html>

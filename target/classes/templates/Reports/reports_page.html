@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Reports</title>
+<link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="logo.png" alt="logo"
+			class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div>
+		<br>
+		<h2>View your monthly reports</h2>
+		<div>
+			<form action="#" th:action="@{/view_reports_page}" method="post"
+				th:object="${budget}">
+				<p>Select which month's reports you would like to view:</p>
+				<p>
+					<select th:field="*{date}">
+						<option th:each="budget : ${listBudgets}"
+							th:value="${budget.date}" th:text="${budget.date}"></option>
+					</select>
+				</p>
+				<p>
+					<button class="submit-button" type="submit">Submit</button>
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

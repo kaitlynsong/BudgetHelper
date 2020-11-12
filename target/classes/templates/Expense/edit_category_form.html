@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit Category Form</title>
+<link th:href="@{../../main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="../../logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div align="center">
+	    <br>
+	    <h2>Edit Category</h2>
+	    <form action="#" th:action="@{/save_category}" method="post" th:object="${category}">
+	        <table>
+	        	<tr>
+	        		<td>Category #:</td>
+	        		<td><input type="text" th:field="*{id}" readonly="readonly"/></td>
+	 			</tr>
+	        	<tr>
+	        		<td>Category Name:</td>
+        		<td><input type="text" th:field="*{categoryName}"/></td>
+        		<td th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}">Category Error</td>
+	 			</tr>
+	        </table><br>
+	        <button class="form-button" type="submit">Save</button>
+	    </form>
+	</div>
+</body>
+</html>

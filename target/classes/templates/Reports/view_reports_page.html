@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>View Reports</title>
+<link th:href="@{main.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<ul>
+		<li class="logo"><img src="logo.png" alt="logo" class="logo-image"></li>
+		<li><a href="/logout">Logout</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/reports_page">Reports</a></li>
+		<li><a href="/expense_page">Expense</a></li>
+		<li><a href="/income_page">Income</a></li>
+		<li><a href="/budget_page">Budget</a></li>
+		<li><a class="active" href="/index">Home</a></li>
+	</ul>
+
+	<div align="left">
+		<br>
+		<h2>Your reports for the selected Month</h2>
+		<div>
+		<h3>Your Expenses</h3>
+		<table border="1" class="collapse-border"> 
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th th:each="category : ${listCategories}" th:text="${category}">Category</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="date : ${dateList}">
+					<td th:text="${date}"></td>
+					<td th:each="category : ${listCategories}" th:text="${listExpenses.get(date).get(category) != 0} ? ${listExpenses.get(date).get(category)}">
+					</td>
+					
+				</tr>
+				<tr class="table-bottom">
+					<td>Subtotals:</td>
+					<td th:each="category : ${listCategories}" th:class="${category==largestCategory} ? 'highlight'" th:text="${listExpenses.Subtotals.get(category)}"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<h4>Budget Status</h4>	
+		<div>
+		<p th:each="budget : ${listCurrentBudget}">Average amount of money spent weekly (Weekly Budget of $
+			<span th:text="${budget.weeklyBudget}">Weekly Budget</span>):&nbsp;&nbsp; $
+			<span th:text="${avgWeeklyExpenses}">Weekly Expenses</span>
+			
+			<br><br>Month Total (Monthly Budget of $
+			<span th:text="${budget.monthlyBudget}">Monthly Budget</span>):&nbsp;&nbsp; $
+			<span th:text="${totalExpenses}">Total Expenses</span>
+		</p>
+		</div>	
+		<br>
+		<h4>Total Income: &nbsp;&nbsp; $
+			<span th:text="${totalIncome}">Total Income</span>
+		</h4>
+		<br>
+		<h3>Heaviest Spending Day of the Week</h3>
+		<table border="1" class="collapse-border">
+			<thead>
+				<tr>
+					<th>Sunday</th>
+					<th>Monday</th>
+					<th>Tuesday</th>
+					<th>Wednesday</th>
+					<th>Thursday</th>
+					<th>Friday</th>
+					<th>Saturday</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="firstLoop : ${dailyExpenseTotals}">
+					<td th:each="secondLoop : ${firstLoop}" th:utext="${secondLoop} ? ${secondLoop.keySet()[0]} 
+					+ '&lt;br/&gt;&lt;br/&gt; &nbsp;&nbsp; $' + ${secondLoop.values()[0]}">
+					</td>
+				</tr>
+				<tr class="table-bottom">
+					<td th:each="dayOfTheWeek : ${dayOfTheWeekTotals.keySet()}" th:class="${dayOfTheWeek==heaviestSpendingDayOfTheWeek} ? 'highlight'" 
+					th:text="${dayOfTheWeekTotals.get(dayOfTheWeek)}">
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>Your heaviest spending day of the week is 
+		<span th:text="${dayOfWeek}"></span>.
+		</p>
+		<br>
+		<br>
+		</div>	
+	</div>
+</body>
+</html>

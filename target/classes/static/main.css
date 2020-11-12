@@ -1,25 +1,186 @@
-html,body,button,input,textarea {
-    font-family: verdana;
+html, body, button, input, textarea {
+	font-family: verdana;
 }
+
+h1 {
+	color: rgb(68, 156, 73);
+}
+
+div {
+	padding-right: 30px;
+	padding-left: 30px;
+}
+
+.logo {
+	float: left;
+}
+
+.logo-image {
+	width: 360px;
+	height: 48px;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #006abf;
+}
+
+li {
+	float: right;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 20px 6px;
+	text-decoration: none;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 15px 20px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #445169;
+}
+
 .button {
-  border: none;
-  border-radius: 4px;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  background-color: #4CAF50;
-  color: white;
-  border: 2px solid #4CAF50;
+	border: none;
+	border-radius: 4px;
+	color: white;
+	padding: 16px 32px;
+	text-align: center; text-decoration : none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color: rgb(68, 156, 73);
+	color: white;
+	text-decoration: none; display : inline-block; font-size : 16px; margin
+	: 4px 2px; transition-duration : 0.4s; cursor : pointer;
+	background-color : rgb( 68, 156, 73); color : white;
+	border: 2px solid rgb(68, 156, 73);
 }
 
 .button:hover {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #4CAF50;
+	background-color: white;
+	color: black;
+	border: 2px solid rgb(68, 156, 73);
+}
+
+.small-button {
+	border: none;
+	border-radius: 4px;
+	color: white;
+	padding: 10px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color: rgb(68, 156, 73);
+	color: white;
+	border: 2px solid rgb(68, 156, 73);
+}
+
+.small-button:hover {
+	background-color: white;
+	color: black;
+	border: 2px solid rgb(68, 156, 73);
+}
+
+.form-button {
+	border: none;
+	border-radius: 4px;
+	color: white;
+	padding: 8px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color: rgb(68, 156, 73);
+	color: white;
+	border: 2px solid rgb(68, 156, 73);
+	margin: auto;
+	display: flex;
+	display: grid; justify-content : center;
+	align-items: center;
+	justify-content: center;
+}
+
+.form-button:hover {
+	background-color: white;
+	color: black;
+	border: 2px solid rgb(68, 156, 73);
+}
+
+.submit-button {
+	border: none;
+	border-radius: 4px;
+	color: white;
+	padding: 8px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	background-color: rgb(68, 156, 73);
+	color: white;
+	border: 2px solid rgb(68, 156, 73);
+}
+
+.submit-button:hover {
+	background-color: white;
+	color: black;
+	border: 2px solid rgb(68, 156, 73);
+}
+
+td {
+    padding: 15px;
+    padding-left: 17px;
+    padding-right: 40px;
+}
+
+th {
+	text-align: center;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+	color: #000000;
+	background-color: #ede0ff;
+}
+
+.collapse-border {
+    border-collapse: collapse;
+}
+
+.table-bottom {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: #006abf;
+	background-color: #dcdcdc;
+}
+
+.highlight {
+	color: #dd0002;
+}
+
+.bold {
+	font-weight: bold;
 }
