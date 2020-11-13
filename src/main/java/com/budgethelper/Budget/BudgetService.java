@@ -27,6 +27,7 @@ public class BudgetService {
 		return budgetRepo.findAll();
 	}
 	
+	//Determines the current date and gets the budget for the current month
 	public List<Budget> getCurrentBudget() {
 		LocalDate currentDate = LocalDate.now();
 		String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM"));

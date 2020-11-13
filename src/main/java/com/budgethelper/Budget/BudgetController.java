@@ -1,6 +1,7 @@
 /* ICS4U Software Development Project
  * 
- * Controller to handle HTTP requests for Budget related functions to the application.
+ * Web controller to handle HTTP requests for Budget related functions to the application.
+ * Also provides the data from the application to display on the web pages.
  * 
  * Author Kaitlyn Song November 13, 2020
  */
@@ -52,7 +53,8 @@ public class BudgetController {
     
     @PostMapping("/save_budget")
     public String saveBudget(@ModelAttribute("budget") @Valid Budget budget, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
+    	//Redirects back to the form if there are errors
+    	if (bindingResult.hasErrors()) {
         	return "Budget/new_budget_form";
         }
     	budgetservice.save(budget);

@@ -1,6 +1,7 @@
 /* ICS4U Software Development Project
  * 
- * Controller to handle HTTP requests for Expense and Category related functions to the application.
+ * Web controller to handle HTTP requests for Expense and Category related functions to the application.
+ * Also provides the data from the application to display on the web pages.
  *
  * Author Kaitlyn Song November 13, 2020
  */
@@ -43,6 +44,7 @@ public class ExpenseController {
     
     @PostMapping("/save_expense")
     public String saveExpense(@ModelAttribute("expense") @Valid Expense expense, BindingResult bindingResult, Model model) {   
+    	//Redirects back to the form if there are errors
     	if (bindingResult.hasErrors()) {
     		List<Category> listCategories = categoryservice.listAll();
             model.addAttribute("listCategories", listCategories);
@@ -90,6 +92,7 @@ public class ExpenseController {
     
     @PostMapping("/save_category")
     public String saveCategory(@ModelAttribute("category") @Valid Category category, BindingResult bindingResult) {   
+    	//Redirects back to the form if there are errors
     	if (bindingResult.hasErrors()) {
         	return "Expense/new_category_form";
         }

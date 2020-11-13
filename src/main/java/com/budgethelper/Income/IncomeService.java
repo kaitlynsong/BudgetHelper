@@ -27,7 +27,9 @@ public class IncomeService {
 		List<Income> incomeEntries = incomeRepo.findByDateStartingWith(budgetMonth);
 		Double totalIncome = 0.0;
 
+		//Go through all the income for the month
 		for (int i = 0; i < incomeEntries.size(); i++) {
+			//Get the amount from each entry and add it to the total
 			Double income = incomeEntries.get(i).getAmount();
 			totalIncome = totalIncome + income;
 		}

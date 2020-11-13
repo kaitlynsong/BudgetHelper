@@ -1,6 +1,7 @@
 /* ICS4U Software Development Project
  * 
- * Controller to handle HTTP requests for Reports related functions to the application.
+ * Web controller to handle HTTP requests for Reports related functions to the application.
+ * Also provides the data from the application to display on the web pages.
  *
  * Author Kaitlyn Song November 13, 2020
  */
@@ -50,6 +51,7 @@ public class ReportsController {
     @PostMapping("/view_reports_page")
     public String viewMonthlyReport(@ModelAttribute("budget") Budget budget, Model model) throws ParseException { 
          
+    	 //For the Category Expense Table
     	 ArrayList<String> listCategories = expenseservice.getMonthCategories(budget.getDate());    
          model.addAttribute("listCategories", listCategories);
          
@@ -62,7 +64,8 @@ public class ReportsController {
          HashMap<String, Double> subTotalMap = (HashMap<String, Double>) listExpenses.get("Subtotals");
  		 String largestCategory = Collections.max(subTotalMap.entrySet(), Map.Entry.comparingByValue()).getKey();
  		 model.addAttribute("largestCategory", largestCategory);
-          
+         
+ 		 //For the Budget Status
          List<Budget> listCurrentBudget = budgetservice.getCurrentBudget();
          model.addAttribute("listCurrentBudget", listCurrentBudget);
          
@@ -72,9 +75,11 @@ public class ReportsController {
          Double totalExpenses = expenseservice.getTotalExpenses(budget.getDate());
          model.addAttribute("totalExpenses", totalExpenses);
          
+         //Total Income
          Double totalIncome = incomeservice.getTotalIncome(budget.getDate());
          model.addAttribute("totalIncome", totalIncome);
          
+         //For the Heaviest Spending Day of the Week
          List<Object> dailyExpenseTotals = expenseservice.getDailyExpenseTotals(budget.getDate());
          model.addAttribute("dailyExpenseTotals", dailyExpenseTotals.get(0));
          model.addAttribute("dayOfTheWeekTotals", dailyExpenseTotals.get(1));

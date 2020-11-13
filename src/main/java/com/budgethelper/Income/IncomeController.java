@@ -1,6 +1,7 @@
 /* ICS4U Software Development Project
  * 
- * Controller to handle HTTP requests for Income related functions to the application.
+ * Web controller to handle HTTP requests for Income related functions to the application.
+ * Also provides the data from the application to display on the web pages.
  *
  * Author Kaitlyn Song November 13, 2020
  */
@@ -40,6 +41,7 @@ public class IncomeController {
     
     @PostMapping("/save_income")
     public String saveIncome(@ModelAttribute("income") @Valid Income income, BindingResult bindingResult) {   
+    	//Redirects back to the form if there are errors
     	if (bindingResult.hasErrors()) {
         	return "Income/new_income_form";
         }

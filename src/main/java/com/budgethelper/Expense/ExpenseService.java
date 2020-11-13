@@ -152,7 +152,9 @@ public class ExpenseService {
 		List<Expense> expenseEntries = expenseRepo.findByDateStartingWith(budgetMonth);
 		Double totalExpenses = 0.0;
 
+		//Go through each expense entry for the month
 		for (int i = 0; i < expenseEntries.size(); i++) { 
+			//Get the amount from each entry and add it to the total
 			Double expenses = expenseEntries.get(i).getAmount();
 			totalExpenses = totalExpenses + expenses;
 		}
@@ -164,10 +166,12 @@ public class ExpenseService {
 		Double totalExpenses = getTotalExpenses(budgetMonth);
 		int daysInMonth = getDaysInMonth(budgetMonth);  
 		
+		//Calculate the average amount of money spent over 7 days for the month
 		Double avgWeeklyExpenses = totalExpenses / daysInMonth * 7;
 		
+		//Round the amount to have two decimal places
 		Double roundedAvgWeeklyExpenses = Math.round(avgWeeklyExpenses * 100.0) / 100.0;
-			    
+		
 		return roundedAvgWeeklyExpenses;
 	}
 	
@@ -245,6 +249,7 @@ public class ExpenseService {
 	}
 	
 	public void save(Expense expense) {
+		//When no category is given, set as Other
 		if (expense.getCategory() == null) {
 			expense.setCategory("Other");
 		}
